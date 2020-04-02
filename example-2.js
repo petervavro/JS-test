@@ -1,8 +1,22 @@
 import {cleanConsole, createAll} from './data';
 const companies = createAll();
 
+const f2 = (companies, hasCar) => {
+  return companies.map((company) => {
+    const users = company.users.filter((u) => {
+      return (u.car === hasCar);
+    });
+
+    return {
+      ...company,
+      users,
+      usersLength: users.length,
+    };
+  });
+};
+
 cleanConsole(2, companies);
-console.log('---- EXAMPLE 2 --- ', 'Put here your function');
+console.log('---- EXAMPLE 2 --- ', f2(companies, false));
 
 // -----------------------------------------------------------------------------
 // INSTRUCCIONES EN ESPAÑOL
