@@ -17,18 +17,27 @@ const f2 = (id) => companies.filter((c, i) => !(c.id === id));
 // Part 3: Create a function taking as a parameter an "id" of "company" and
 // allowing to make a PATCH (as with an HTTP call) on all
 // attributes of this "company" except on the "users" attribute.
-/*
 const f3 = (id) => {
-  return companies;
+  return (patchValues = {}) => {
+    return companies.map((c, i) => {
+      delete patchValues.users;
+      if (c.id === id) {
+        return {
+          ...c,
+          ...patchValues,
+        };
+      }
+
+      return c;
+    });
+  };
 };
-*/
 
 // Part 4: Create a function taking as parameter an "id" of "company" and a
 // new "user" whose name is "Delgado", the first name "Juan", aged 35 and
 // a car. The new "user" must be added to the "users" list of this
 // "company" and have an automatically generated "id". The function must also modify
 // the "usersLength" attribute of "company".
-
 const f4 = (id) => {
   return companies.map((c, i) => {
     const users = [...c.users];
@@ -116,7 +125,7 @@ const f9 = (cId, uId) => {
 cleanConsole(7, companies);
 console.log('---- EXAMPLE 7 part 1 --- ', f1(1));
 console.log('---- EXAMPLE 7 part 2 --- ', f2(1));
-console.log('---- EXAMPLE 7 part 3 --- ', 'Put here your function');
+console.log('---- EXAMPLE 7 part 3 --- ', f3(0)({users: 'Peter'}));
 console.log('---- EXAMPLE 7 part 4 --- ', f4(2));
 console.log('---- EXAMPLE 7 part 5 --- ', 'Put here your function');
 console.log('---- EXAMPLE 7 part 6 --- ', f6(2, 1));
