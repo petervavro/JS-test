@@ -1,6 +1,6 @@
 import {cleanConsole, createAll} from './data';
 
-const companies = createAll();
+let companies = createAll();
 
 // Part 1: Create a function taking as parameter an "id" of "company" and
 // returning the name of this "company".
@@ -44,7 +44,7 @@ const f4 = (cId, user) => {
     if (c.id === cId) {
       // The new "user" must be added to the "users" list of this "company"
       users.push({
-        user,
+        ...user,
         id: users.length, // and have an automatically generated "id".
       });
     };
@@ -160,7 +160,22 @@ const f8 = (cId, uId) => {
 // an "id" of "user". The function must allow the user to be transferred as a parameter
 // from the 1st "company" to the 2nd "company". The "usersLength" attribute of each
 // "company" must be updated.
-// const f9 = (cFromId, cToId, uId) => {};
+const f9 = (cFromId, cToId, uId) => {
+  // Get company
+  const company = companies.find((c) => (c.id === cFromId));
+
+  // Get user
+  const user = company.users.find((u) => (u.id === uId));
+
+  // Remove user form previous
+  companies = f6(cFromId, uId);
+
+  // Add user to new
+  companies = f4(cToId, user);
+
+  // I know that the "companies" is changed now, but this fits a solution for this case to save a time
+  return companies;
+};
 
 
 cleanConsole(7, companies);
@@ -177,7 +192,8 @@ console.log('---- EXAMPLE 7 part 5 --- ', f5(0)({name: 'Great Company'}));
 console.log('---- EXAMPLE 7 part 6 --- ', f6(2, 1));
 console.log('---- EXAMPLE 7 part 7 --- ', f7(0, 1)({firstName: 'Peter'}));
 console.log('---- EXAMPLE 7 part 8 --- ', f8(0, 1)({firstName: 'Peter'}));
-console.log('---- EXAMPLE 7 part 9 --- ', 'Put here your function');
+console.log('---- EXAMPLE 7 part 9 --- ', f9(0, 1, 0));
+console.log(companies);
 
 // -----------------------------------------------------------------------------
 // INSTRUCCIONES EN ESPAÑOL
