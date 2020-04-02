@@ -1,9 +1,36 @@
 import {cleanConsole, createAll} from './data';
 
+import f1 from './example-1';
+
 const companies = createAll();
 
+const isCapitalized = (s) => (s.charAt(0) === s.charAt(0).toUpperCase());
+
+const f3 = (companies, hasCar) => {
+  return (
+    companies.find((c) => {
+      // Check company name
+      if (!isCapitalized(c.name)) return true;
+
+      return (
+        c.users.find((u) => {
+          // Check first name
+          if ((typeof u.firstName === 'string' || u.firstName instanceof String)
+                    && !isCapitalized(u.firstName)) return true;
+
+          // Check last name
+          if ((typeof u.lastName === 'string' || u.lastName instanceof String)
+                    && !isCapitalized(u.lastName)) return true;
+
+          return false;
+        }) !== undefined
+      );
+    }) === undefined
+  );
+};
+
 cleanConsole(3, companies);
-console.log('---- EXAMPLE 3 --- ', 'Put here your function');
+console.log('---- EXAMPLE 3 --- ', f3(companies), f3(f1(companies)));
 
 // -----------------------------------------------------------------------------
 // INSTRUCCIONES EN ESPAÑOL

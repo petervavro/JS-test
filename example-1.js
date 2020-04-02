@@ -7,15 +7,17 @@ const capitalize = (s) => {
   return s.charAt(0).toUpperCase() + s.slice(1);
 };
 
-const replaceUndefinedValues = (entity) => {
+export default function f1(entity) {
   return entity.map((company) => {
     const users = company.users.map((user) => {
       const newUser = {...user};
 
       Object.keys(user).map(function(key) {
+        // Replace for empty string
         if (newUser[key] === undefined) newUser[key] = '';
 
-        if (['firstName', 'lastName'].includes(key)) newUser[key] = capitalize(newUser[key]);
+        // Capitalize name
+        if (['firstName', 'lastName'].includes(key) === true) newUser[key] = capitalize(newUser[key]);
       });
 
       return newUser;
@@ -31,7 +33,7 @@ const replaceUndefinedValues = (entity) => {
 };
 
 cleanConsole(1, companies);
-console.log('---- EXAMPLE 1 --- ', replaceUndefinedValues(companies));
+console.log('---- EXAMPLE 1 --- ', f1(companies));
 
 // -----------------------------------------------------------------------------
 // INSTRUCCIONES EN ESPAÑOL
