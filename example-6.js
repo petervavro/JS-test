@@ -2,8 +2,30 @@ import {cleanConsole, createAll} from './data';
 
 const companies = createAll();
 
+export default function f6(cs) {
+  return cs.map((c) => {
+    // Transform users
+    const users = c.users.map((u) => ({
+      [`${u.firstName}${u.lastName}${u.age}`]: u.car,
+    }));
+
+    let newC = {};
+
+    for (let i = 0; i < users.length; i++) {
+      newC = {
+        ...newC,
+        ...users[i],
+      };
+    }
+
+    return {
+      ...newC,
+    };
+  });
+};
+
 cleanConsole(6, companies);
-console.log('---- EXAMPLE 6 --- ', 'Put here your function');
+console.log('---- EXAMPLE 6 --- ', f6(companies));
 
 // -----------------------------------------------------------------------------
 // INSTRUCCIONES EN ESPAÑOL
