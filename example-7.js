@@ -38,18 +38,14 @@ const f3 = (id) => {
 // a car. The new "user" must be added to the "users" list of this
 // "company" and have an automatically generated "id". The function must also modify
 // the "usersLength" attribute of "company".
-const f4 = (id) => {
+const f4 = (cId, user) => {
   return companies.map((c, i) => {
     const users = [...c.users];
-    if (c.id === id) {
-      // The new "user" must be added to the "users" list of this
-      // "company" and have an automatically generated "id".
+    if (c.id === cId) {
+      // The new "user" must be added to the "users" list of this "company"
       users.push({
-        firstName: 'Juan',
-        lastName: 'Delgad',
-        age: 35,
-        car: true,
-        id: users.length,
+        user,
+        id: users.length, // and have an automatically generated "id".
       });
     };
 
@@ -64,11 +60,20 @@ const f4 = (id) => {
 // Part 5: Create a function taking as parameter an "id" of "company" and
 // allowing to make a PUT (as with an HTTP call) on this "company" except
 // on the "users" attribute.
-/*
 const f5 = (id) => {
-  return companies;
+  return (putValues = {}) => {
+    return companies.map((c, i) => {
+      if (c.id === id) {
+        return {
+          ...putValues,
+          users: c.users,
+        };
+      }
+
+      return c;
+    });
+  };
 };
-*/
 
 // Part 6: Create a function taking as a parameter an "id" of "company" and a
 // "id" of "user". The function must remove this "user" from the list of "users"
@@ -96,41 +101,82 @@ const f6 = (cId, uId) => {
 // Part 7: Create a function taking as a parameter an "id" of "company" and a
 // "id" of "user" allowing to make a PATCH (as with an HTTP call) on this
 // "user".
-/*
 const f7 = (cId, uId) => {
-  return companies;
+  return (patchValues) => {
+    return companies.map((c) => {
+      if (c.id === cId) {
+        const users = [
+          ...c.users,
+        ];
+
+        const uIndex = c.users.findIndex((u) => (u.id === uId));
+
+        // Patch user
+        users[uIndex] = {
+          ...users[uIndex],
+          ...patchValues,
+        };
+
+        return {
+          ...c,
+          users,
+        };
+      }
+
+      return c;
+    });
+  };
 };
-*/
 
 // Part 8: Create a function taking as a parameter an "id" of "company" and a
 // "id" of "user" allowing to make a PUT (as with an HTTP call) on this
 // "user".
-/*
 const f8 = (cId, uId) => {
-  return companies;
+  return (putValues) => {
+    return companies.map((c) => {
+      const users = [
+        ...c.users,
+      ];
+
+      if (c.id === cId) {
+        const uIndex = c.users.findIndex((u) => (u.id === uId));
+
+        // "Put" user
+        users[uIndex] = {
+          ...putValues,
+        };
+      }
+
+      return {
+        ...c,
+        users,
+      };
+    });
+  };
 };
-*/
+
 
 // Part 9: Create a function taking as parameter two "id" of "company" and
 // an "id" of "user". The function must allow the user to be transferred as a parameter
 // from the 1st "company" to the 2nd "company". The "usersLength" attribute of each
 // "company" must be updated.
-/*
-const f9 = (cId, uId) => {
-  return companies;
-};
-*/
+// const f9 = (cFromId, cToId, uId) => {};
 
 
 cleanConsole(7, companies);
 console.log('---- EXAMPLE 7 part 1 --- ', f1(1));
 console.log('---- EXAMPLE 7 part 2 --- ', f2(1));
-console.log('---- EXAMPLE 7 part 3 --- ', f3(0)({users: 'Peter'}));
-console.log('---- EXAMPLE 7 part 4 --- ', f4(2));
-console.log('---- EXAMPLE 7 part 5 --- ', 'Put here your function');
+console.log('---- EXAMPLE 7 part 3 --- ', f3(0)({name: 'Great Company'}));
+console.log('---- EXAMPLE 7 part 4 --- ', f4(0, {
+  firstName: 'Juan',
+  lastName: 'Delgad',
+  age: 35,
+  car: true,
+}));
+console.log('---- EXAMPLE 7 part 5 --- ', f5(0)({name: 'Great Company'}));
 console.log('---- EXAMPLE 7 part 6 --- ', f6(2, 1));
-console.log('---- EXAMPLE 7 part 7 --- ', 'Put here your function');
-console.log('---- EXAMPLE 7 part 8 --- ', 'Put here your function');
+console.log('---- EXAMPLE 7 part 7 --- ', f7(0, 1)({firstName: 'Peter'}));
+console.log('---- EXAMPLE 7 part 8 --- ', f8(0, 1)({firstName: 'Peter'}));
 console.log('---- EXAMPLE 7 part 9 --- ', 'Put here your function');
 
 // -----------------------------------------------------------------------------
