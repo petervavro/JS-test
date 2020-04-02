@@ -1,8 +1,27 @@
 import {cleanConsole, createAll} from './data';
 const companies = createAll();
 
+const f4 = (cs) => {
+  // Get all users to one table
+  let users = cs.map((c) => {
+    return c.users.map((u) => ({
+      ...u,
+      company: c.name,
+    }));
+  });
+
+  users = users.flat();
+
+  // Sort them by age desc
+  users = users.sort(function(a, b) {
+    return b.age - a.age;
+  });
+
+  return users;
+};
+
 cleanConsole(4, companies);
-console.log('---- EXAMPLE 4 --- ', 'Put here your function');
+console.log('---- EXAMPLE 4 --- ', f4(companies));
 
 // -----------------------------------------------------------------------------
 // INSTRUCCIONES EN ESPAÑOL
