@@ -1,8 +1,28 @@
 import {cleanConsole, createAll} from './data';
 const companies = createAll();
 
+import f4 from './example-4';
+
+const getAvg = (ages) => (ages.reduce((a, b) => a + b, 0) / ages.length);
+
+export default function f5(us) {
+  // 'average' => average age of "users"
+  const ages = us.map((u) => u.age);
+  const ageAvg = getAvg(ages);
+
+  // 'hasCar' => number of "users" owning a car
+  const usersWithCar = us.filter((u) => (u.car === true));
+
+  return {
+    'size': us.length,
+    'average': ageAvg,
+    'hasCar': usersWithCar.length,
+    'averageWithCar': getAvg(usersWithCar.map((u) => u.age)),
+  };
+}
+
 cleanConsole(5, companies);
-console.log('---- EXAMPLE 5 --- ', 'Put here your function');
+console.log('---- EXAMPLE 5 --- ', f5(f4(companies)));
 
 // -----------------------------------------------------------------------------
 // INSTRUCCIONES EN ESPAÑOL

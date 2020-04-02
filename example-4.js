@@ -1,7 +1,7 @@
 import {cleanConsole, createAll} from './data';
 const companies = createAll();
 
-const f4 = (cs) => {
+export default function f4(cs) {
   // Get all users to one table
   let users = cs.map((c) => {
     return c.users.map((u) => ({
