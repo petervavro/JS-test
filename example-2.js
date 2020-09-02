@@ -1,31 +1,23 @@
 import {cleanConsole, createAll} from './data';
 const companies = createAll();
 
-const f2 = (companies, hasCar) => {
-  return companies.map((company) => {
-    const users = company.users.filter((u) => {
-      return (u.car === hasCar);
-    });
+export default function f2(companies, hasCar) {
+  return companies.map(
+      (company) => {
+        const users = company.users.filter(
+            (u) => (u.car === hasCar),
+        );
 
-    return {
-      ...company,
-      users,
-      usersLength: users.length,
-    };
-  });
+        return {
+          ...company,
+          users,
+          usersLength: users.length,
+        };
+      });
 };
 
 cleanConsole(2, companies);
-console.log('---- EXAMPLE 2 --- ', f2(companies, false));
-
-// -----------------------------------------------------------------------------
-// INSTRUCCIONES EN ESPAÑOL
-
-// Crear una función tomando como parámetro la variable "companies" y el
-// booleano "hasCar". Para cada "company" debe conservar solo
-// "users" cuyo valor de atributo "car" es igual al parámetro del
-// función "hasCar" y el atributo "usersLength" deben indicar el total de
-// "users" correspondientes al parámetro "hasCar".
+console.log('---- EXAMPLE 2 --- ', f2(companies, true));
 
 // -----------------------------------------------------------------------------
 // INSTRUCTIONS IN ENGLISH
@@ -35,6 +27,15 @@ console.log('---- EXAMPLE 2 --- ', f2(companies, false));
 // "users" whose attribute value "car" is equal to the parameter of the
 // "hasCar" function and the "usersLength" attribute must indicate the number of
 // "users" corresponding to the "hasCar" parameter.
+
+// -----------------------------------------------------------------------------
+// INSTRUCCIONES EN ESPAÑOL
+
+// Crear una función tomando como parámetro la variable "companies" y el
+// booleano "hasCar". Para cada "company" debe conservar solo
+// "users" cuyo valor de atributo "car" es igual al parámetro del
+// función "hasCar" y el atributo "usersLength" deben indicar el total de
+// "users" correspondientes al parámetro "hasCar".
 
 // -----------------------------------------------------------------------------
 // INSTRUCTIONS EN FRANÇAIS
