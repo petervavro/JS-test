@@ -19,26 +19,26 @@
   "homepage": "https://github.com/petervavro/JS-test#readme",
   "description": "",
   "devDependencies": {
-    "@babel/core": "^7.8.4",
-    "@babel/preset-env": "^7.8.4",
+    "@babel/core": "^7.11.5",
+    "@babel/preset-env": "^7.11.5",
     "babel-core": "^7.0.0-0",
     "babel-loader": "^7.1.5",
     "css-loader": "^1.0.0",
     "eslint": "^6.8.0",
     "eslint-config-google": "^0.14.0",
-    "eslint-loader": "^3.0.3",
+    "eslint-loader": "^3.0.4",
     "file-loader": "^1.1.11",
-    "node-sass": "^4.9.2",
+    "node-sass": "^4.14.1",
     "sass-loader": "^7.0.3",
     "style-loader": "^0.21.0",
-    "webpack": "^4.41.6",
-    "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
     "extract-text-webpack-plugin": "^3.0.2",
     "path": "^0.12.7",
-    "rxjs": "^6.2.2"
+    "rxjs": "^6.6.2"
   },
   "babel": {
     "presets": [
