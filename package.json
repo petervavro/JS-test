@@ -1,5 +1,5 @@
 {
-  "name": "JS-test",
+  "name": "js-test",
   "version": "1.0.1",
   "main": "webpack.config.js",
   "scripts": {
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/adrien_ncco/testdev.git"
+    "url": "git+https://github.com/petervavro/JS-test.git"
   },
-  "author": "",
+  "author": "Adrien Bianchi",
   "license": "ISC",
   "bugs": {
-    "url": "https://gitlab.com/adrien_ncco/testdev/issues"
+    "url": "https://github.com/petervavro/JS-test/issues"
   },
-  "homepage": "https://gitlab.com/adrien_ncco/testdev#readme",
+  "homepage": "https://github.com/petervavro/JS-test#readme",
   "description": "",
   "devDependencies": {
     "@babel/core": "^7.8.4",
