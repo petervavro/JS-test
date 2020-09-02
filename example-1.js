@@ -1,49 +1,56 @@
 import {createAll, cleanConsole} from './data';
 const companies = createAll();
 
-// https://flaviocopes.com/how-to-uppercase-first-letter-javascript/
-const capitalize = (s) => {
+/**
+ * Capitalize a string
+ * from https://flaviocopes.com/how-to-uppercase-first-letter-javascript/
+ * @param  {String} s String to capitalize
+ * @return {String}
+ */
+function capitalize(s) {
   if (typeof s !== 'string') return '';
   return s.charAt(0).toUpperCase() + s.slice(1);
 };
 
 export default function f1(entity) {
-  return entity.map((company) => {
-    const users = company.users.map((user) => {
-      const newUser = {...user};
+  return entity.map((company) => ({
+    ...company,
+    name: capitalize(company.name),
+    users: company.users.map(
+        (user) => {
+          return Object.keys(user).reduce(
+              (accumulator, propertyName) => {
+                let value = user[propertyName];
 
-      Object.keys(user).map(function(key) {
-        // Replace for empty string
-        if (newUser[key] === undefined) newUser[key] = '';
+                // Replace for empty string
+                if (value === undefined) value = '';
 
-        // Capitalize name
-        if (['firstName', 'lastName'].includes(key) === true) newUser[key] = capitalize(newUser[key]);
-      });
+                // Capitalize name
+                if (
+                  [
+                    'firstName',
+                    'lastName',
+                  ].includes(propertyName)
+                ) value = capitalize(value);
 
-      return newUser;
-    }).sort((a, b) => a.lastName.localeCompare(b.lastName));
-    return {
-      ...company,
-      name: capitalize(company.name),
-      users,
-    };
-  }).sort(function(a, b) {
+                return {
+                  ...accumulator,
+                  [propertyName]: value,
+                };
+              },
+              {},
+          );
+        },
+    ).sort(
+        (a, b) => a.lastName.localeCompare(b.lastName),
+    ),
+  })).sort((a, b) => {
     return b.users.length - a.users.length;
   });
 };
 
 cleanConsole(1, companies);
 console.log('---- EXAMPLE 1 --- ', f1(companies));
-
-// -----------------------------------------------------------------------------
-// INSTRUCCIONES EN ESPAÑOL
-
-// Crear una función tomando la variable "companies" como parámetro y reemplazando
-// todos los valores "undefined" en "usuarios" por un string vacío.
-// El nombre de cada "company" debe tener una letra mayúscula al principio, así como
-// el apellido y el nombre de cada "user".
-// Las "companies" deben ordenarse por su total de "user" (orden decreciente)
-// y los "users" de cada "company" deben aparecer en orden alfabético.
 
 // -----------------------------------------------------------------------------
 // INSTRUCTIONS IN ENGLISH
@@ -54,6 +61,16 @@ console.log('---- EXAMPLE 1 --- ', f1(companies));
 // the last name and first name of each "user".
 // The "companies" must be sorted by their number of "user" (decreasing order)
 // and the "users" of each "company" must be listed in alphabetical order.
+
+// -----------------------------------------------------------------------------
+// INSTRUCCIONES EN ESPAÑOL
+
+// Crear una función tomando la variable "companies" como parámetro y reemplazando
+// todos los valores "undefined" en "usuarios" por un string vacío.
+// El nombre de cada "company" debe tener una letra mayúscula al principio, así como
+// el apellido y el nombre de cada "user".
+// Las "companies" deben ordenarse por su total de "user" (orden decreciente)
+// y los "users" de cada "company" deben aparecer en orden alfabético.
 
 // -----------------------------------------------------------------------------
 // INSTRUCTIONS EN FRANÇAIS
