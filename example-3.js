@@ -8,29 +8,51 @@ const isCapitalized = (s) => (s.charAt(0) === s.charAt(0).toUpperCase());
 
 const f3 = (companies, hasCar) => {
   return (
-    companies.find((c) => {
-      // Check company name
-      if (!isCapitalized(c.name)) return true;
+    companies.find(
+        (company) => {
+          // Check company name
+          if (!isCapitalized(company.name)) return true;
 
-      return (
-        c.users.find((u) => {
-          // Check first name
-          if ((typeof u.firstName === 'string' || u.firstName instanceof String)
-                    && !isCapitalized(u.firstName)) return true;
+          return (
+            company.users.find(
+                (user) => {
+                  // Check first name
+                  if (
+                    (
+                      typeof user.firstName === 'string'
+                      || user.firstName instanceof String
+                    )
+                    && !isCapitalized(user.firstName)
+                  ) return true;
 
-          // Check last name
-          if ((typeof u.lastName === 'string' || u.lastName instanceof String)
-                    && !isCapitalized(u.lastName)) return true;
+                  // Check last name
+                  if (
+                    (
+                      typeof user.lastName === 'string'
+                      || user.lastName instanceof String
+                    )
+                    && !isCapitalized(user.lastName)
+                  ) return true;
 
-          return false;
-        }) !== undefined
-      );
-    }) === undefined
+                  return false;
+                },
+            ) !== undefined
+          );
+        },
+    ) === undefined
   );
 };
 
 cleanConsole(3, companies);
 console.log('---- EXAMPLE 3 --- ', f3(companies), f3(f1(companies)));
+
+// -----------------------------------------------------------------------------
+// INSTRUCTIONS IN ENGLISH
+
+// Create a function taking the "companies" variable as a parameter and returning
+// a boolean validating that all the names of the companies and the attributes "firstName"
+// and "lastName" of "users" are capitalized. You must test the operation
+// of this function by importing the function created for "example-1.js".
 
 // -----------------------------------------------------------------------------
 // INSTRUCCIONES EN ESPAÑOL
@@ -40,14 +62,6 @@ console.log('---- EXAMPLE 3 --- ', f3(companies), f3(f1(companies)));
 // "firstName" y "lastName" de "users" están en mayúsculas.
 // Debes probar la operación de esta función importando la función creada
 // en el "example-1.js".
-
-// -----------------------------------------------------------------------------
-// INSTRUCTIONS IN ENGLISH
-
-// Create a function taking the "companies" variable as a parameter and returning
-// a boolean validating that all the names of the companies and the attributes "firstName"
-// and "lastName" of "users" are capitalized. You must test the operation
-// of this function by importing the function created for "example-1.js".
 
 // -----------------------------------------------------------------------------
 // INSTRUCTIONS EN FRANÇAIS
