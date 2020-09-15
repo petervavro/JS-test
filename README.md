@@ -1,5 +1,7 @@
-# Advanced Javascript Test
-The intention of this repository is to present my JavaScript skills. The test was developed by [Adrien Bianchi](https://gitlab.com/adrien_ncco).
+# Advanced Javascript Chanllange 
+The intention of this repository is to present my JavaScript skills.
+
+The challenge is composed of various tasks, which focus on use of ES6 features.The test was developed by [Adrien Bianchi](https://gitlab.com/adrien_ncco).
 
 ## Installation
 
