@@ -79,16 +79,8 @@ export function createAll() {
   return companies;
 }
 
-function clone(value) {
-  return Object.keys(value).map((key) => {
-    value[key].users = value[key].users.map((user) => ({...user}));
-    value[key] = {...value[key]};
-    return value[key];
-  });
-}
-
 export function cleanConsole(index, value) {
-  const result = clone(value);
   console.log(`---- EXAMPLE ${index} --- values before your modifications  :`,
-      result);
+      JSON.parse(JSON.stringify(value)),
+  );
 }

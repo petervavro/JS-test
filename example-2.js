@@ -1,24 +1,6 @@
 import {cleanConsole, createAll} from './data';
 const companies = createAll();
 
-export default function f2(companies, hasCar) {
-  return companies.map(
-      (company) => {
-        const users = company.users.filter(
-            (u) => (u.car === hasCar),
-        );
-
-        return {
-          ...company,
-          users,
-          usersLength: users.length,
-        };
-      });
-};
-
-cleanConsole(2, companies);
-console.log('---- EXAMPLE 2 --- ', f2(companies, true));
-
 // -----------------------------------------------------------------------------
 // INSTRUCTIONS IN ENGLISH
 
@@ -45,3 +27,21 @@ console.log('---- EXAMPLE 2 --- ', f2(companies, true));
 // "users" dont la valeur de l'attribut "car" est égal au paramètre de la
 // fonction "hasCar" et l'attribut "usersLength" doit renseigner le nombre de
 // "users" correspondant au paramètre "hasCar".
+
+export default function f2(companies, hasCar) {
+  return companies.map(
+      (company) => {
+        const users = company.users.filter(
+            (u) => (u.car === hasCar),
+        );
+
+        return {
+          ...company,
+          users,
+          usersLength: users.length,
+        };
+      });
+};
+
+cleanConsole(2, companies);
+console.log('---- EXAMPLE 2 --- ', f2(companies, true));

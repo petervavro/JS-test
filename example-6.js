@@ -2,30 +2,13 @@ import {cleanConsole, createAll} from './data';
 
 const companies = createAll();
 
-export default function f6(cs) {
-  return cs.map((c) => {
-    // Transform users
-    const users = c.users.map((u) => ({
-      [`${u.firstName}${u.lastName}${u.age}`]: u.car,
-    }));
+// -----------------------------------------------------------------------------
+// INSTRUCTIONS IN ENGLISH
 
-    let newC = {};
-
-    for (let i = 0; i < users.length; i++) {
-      newC = {
-        ...newC,
-        ...users[i],
-      };
-    }
-
-    return {
-      ...newC,
-    };
-  });
-};
-
-cleanConsole(6, companies);
-console.log('---- EXAMPLE 6 --- ', f6(companies));
+// Create a function taking the "companies" variable as a parameter and returning
+// a new object whose attributes are the concatenation of the name, first name and
+// the age of each user. Each attribute must have the value of boolean "car".
+// See example below.
 
 // -----------------------------------------------------------------------------
 // INSTRUCCIONES EN ESPAÑOL
@@ -34,14 +17,6 @@ console.log('---- EXAMPLE 6 --- ', f6(companies));
 // un nuevo objeto cuyos atributos son la concatenación del apelido, nombre y
 // edad de cada "user". Cada atributo debe tener el valor de boolean "car".
 // Ver ejemplo a continuación.
-
-// -----------------------------------------------------------------------------
-// INSTRUCTIONS IN ENGLISH
-
-// Create a function taking the "companies" variable as a parameter and returning
-// a new object whose attributes are the concatenation of the name, first name and
-// the age of each user. Each attribute must have the value of boolean "car".
-// See example below.
 
 // -----------------------------------------------------------------------------
 // INSTRUCTIONS EN FRANÇAIS
@@ -58,3 +33,20 @@ const example = {
 };
 
 console.log(example);
+
+export default function f6(cs) {
+  return cs.map(
+      (c) => (
+        c.users.reduce(
+            (accumulator, user) => ({
+              ...accumulator,
+              [`${user.firstName}${user.lastName}${user.age}`]: user.car,
+            }),
+            {},
+        )
+      ),
+  );
+};
+
+cleanConsole(6, companies);
+console.log('---- EXAMPLE 6 --- ', f6(companies));
