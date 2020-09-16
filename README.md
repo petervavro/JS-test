@@ -1,7 +1,8 @@
-# Advanced Javascript Chanllange 
-The intention of this repository is to present my JavaScript skills.
+# Code Challenge - JavaScript Array Methods
 
-The challenge is composed of various tasks, which focus on use of ES6 features.The test was developed by [Adrien Bianchi](https://gitlab.com/adrien_ncco).
+The challenge is composed of various tasks, with focus on use of ES6 features, while working with Array object. All the solutions presented here are developed by me in order to present my JavaScript skills.
+
+*The challenge was developed by [Adrien Bianchi](https://gitlab.com/adrien_ncco).*
 
 ## Installation
 
